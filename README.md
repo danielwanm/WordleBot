@@ -12,7 +12,7 @@ Arrives at correct answer in an average of 3.52 guesses
 
 # Technical highlights
 
-- Utilises Shanon's Algorithm: $E(I) = \sum_xp(x)\log_2(\frac{1}{p(x)})$ to determine choice which yields highest entropy at each word choice.  
+- Utilises Shanon's Algorithm: $E(I) = -\sum_xp(x)\log_2(p(x))$ to determine choice which yields highest entropy at each word choice.  
 
 - Optimised algorithim to prioritise words that could actually be the answer over information near end of game
 
