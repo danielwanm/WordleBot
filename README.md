@@ -10,10 +10,7 @@ An information theory backed bot which plays Wordle, through a greedy algorithm 
 
 # Technical highlights
 
-- Utilises Shanon's Algorithm: $E(I) = \sum_xp(x)\log_2(\frac{1}{p(x)})$ to determine choice which yields highest entropy.  
-
-- Optimised probability calculation using buckets
-
+- Utilises Shanon's Algorithm: $E(I) = \sum_xp(x)\log_2(\frac{1}{p(x)})$ to determine choice which yields highest entropy at each word choice.  
 
 # Build & Run
 
