@@ -28,6 +28,14 @@ Arrives at correct answer in an average of 3.52 guesses
 | 6       | 2     |
 | 7+      | 0     |
 
+```mermaid
+xychart-beta
+    title "Guess distribution across all 2315 answers"
+    x-axis "Number of guesses" [1, 2, 3, 4, 5, 6]
+    y-axis "Games solved" 0 --> 1200
+    bar [0, 40, 1093, 1120, 60, 2]
+```
+
 
 
 # Build & Run
