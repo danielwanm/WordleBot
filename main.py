@@ -1,8 +1,8 @@
-from optimalWord import WordleCalculator
+from wordleCalculator import WordleCalculator
 
 if __name__ == "__main__":
     possibleWords = []
-    with open("data/answers.txt") as f:
+    with open("data/Input/answers.txt") as f:
         for word in f:
             word = word.strip()
             possibleWords.append(word)
