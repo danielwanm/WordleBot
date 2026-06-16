@@ -1,4 +1,4 @@
-from optimalWord import OptimalWordCalc
+from optimalWord import WordleCalculator
 
 if __name__ == "__main__":
     possibleWords = []
@@ -7,14 +7,14 @@ if __name__ == "__main__":
             word = word.strip()
             possibleWords.append(word)
 
-    calc = OptimalWordCalc()
+    calc = WordleCalculator()
 
     print("Guess: tares")
     currentGuess = "tares"
     print("Write the colors that we got with grey = 0, yellow = 1 and green = 2, ie for 🟩⬜️🟨⬜️🟨 type: 20101")
     x = input("Answer: ")
     possibleWords = calc.getListOfWordsSatisfyingX(x, currentGuess, possibleWords)
-    print(possibleWords)
+    print(f"The following words are still possible: {possibleWords}")
 
     while len(possibleWords) > 0:
         if len(possibleWords) == 1:

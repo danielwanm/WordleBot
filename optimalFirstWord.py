@@ -1,4 +1,4 @@
-from optimalWord import OptimalWordCalc
+from optimalWord import WordleCalculator
 
 if __name__ == "__main__":
     possibleWords = []
@@ -6,7 +6,7 @@ if __name__ == "__main__":
         for word in f:
             possibleWords.append(word.strip())
 
-    calc = OptimalWordCalc()
+    calc = WordleCalculator()
 
     expectedInformation = {}
     with open("acceptedWords.txt") as f:

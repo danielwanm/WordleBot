@@ -1,7 +1,8 @@
 import math
 from collections import Counter
+class WordleCalculator:
 
-class OptimalWordCalc:
+    # Returns the guess which gives the most expected information
     def calculateOptimalWord(self, possibleWords):
         expectedInformation = {}
         with open("data/acceptedWords.txt") as f:
@@ -10,11 +11,14 @@ class OptimalWordCalc:
                 expectedInformation[word] = self.calculateEV(possibleWords, word)
         return max(expectedInformation, key=expectedInformation.get)
 
+    # calculates the expected number of bits revealed for a potential guess given the set of possible words
     def calculateEV(self, possibleWords, word):
         buckets = Counter(self.feedback(word, answer) for answer in possibleWords)
         n = len(possibleWords)
         return sum((count / n) * math.log2(n / count) for count in buckets.values())
 
+
+    # returns the 5 color long feedback for a  potential guess based on what the answer is
     def feedback(self, guess, answer):
         result = [0] * 5
         remaining = list(answer)
@@ -28,7 +32,7 @@ class OptimalWordCalc:
                 remaining[remaining.index(guess[i])] = None
         return tuple(result)
 
-
+    # returns the new set of possible words after a real guess
     def getListOfWordsSatisfyingX(self, x, word, possibleWords):
         x = [int(c) for c in x]
         greens = {}                 # position -> required letter
@@ -36,21 +40,24 @@ class OptimalWordCalc:
         min_count = Counter()       # letter -> minimum occurrences in answer
         exact_cap = {}              # letter -> max occurrences (set when a grey appears)
 
+
+        # set up filter based on x (feedback)
         for i in range(5):
             letter, color = word[i], x[i]
-            if color == 2:          # green
+            if color == 2:          
                 greens[i] = letter
                 min_count[letter] += 1
-            elif color == 1:        # yellow
+            elif color == 1:        
                 not_at.append((i, letter))
                 min_count[letter] += 1
-            else:                   # grey
+            else:                   
                 not_at.append((i, letter))
 
-        for i in range(5):          # a grey tile caps that letter at its green+yellow count
+        for i in range(5):          
             if x[i] == 0:
                 exact_cap[word[i]] = min_count[word[i]]
 
+        # run through filter
         adheredToX = []
         for line in possibleWords:
             candidate = line.strip()
